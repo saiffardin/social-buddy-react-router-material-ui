@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+
 
 import {
     BrowserRouter as Router,
@@ -15,6 +16,21 @@ import PostDetail from './components/PostDetail/PostDetail';
 
 function App() {
 
+    const [allPosts, setAllPosts] = useState([]);
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.json())
+            .then(data => {
+
+                setAllPosts(data);
+                // console.log(allPosts);
+            })
+    }, [])
+
+
+
+    // console.log(allPosts);
     return (
 
         <Router>
@@ -22,15 +38,15 @@ function App() {
             <Switch>
 
                 <Route exact path="/">
-                    <AllPost></AllPost>
+                    <AllPost allPosts={allPosts}></AllPost>
                 </Route>
 
                 <Route path="/home">
-                    <AllPost></AllPost>
+                    <AllPost allPosts={allPosts}></AllPost>
                 </Route>
 
                 <Route path="/post/:postId">
-                    <PostDetail></PostDetail>
+                    <PostDetail allPosts={allPosts}></PostDetail>
                 </Route>
 
                 <Route path="*">

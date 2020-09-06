@@ -32,17 +32,17 @@ const useStyles = makeStyles({
 
 
 const EachPost = (props) => {
-
+    
     const classes = useStyles();
 
-    const { post, showMoreHandler } = props;
-    const { userId, id, title, body } = post;
+    const { post } = props;
+    const { id, title, body } = post;
 
     return (
         <div className='card-div'>
 
-            {/* card 1 */}
 
+            {/* card 1 */}
             <Card className={classes.root}>
 
                 <CardContent>
@@ -64,13 +64,7 @@ const EachPost = (props) => {
 
                 </CardContent>
 
-                <CardActions>
-
-                    <Link to={`/post/${id}`}>
-                        <Button onClick={showMoreHandler} variant="contained" color="primary" size="small">Show More</Button>
-                    </Link>
-
-                </CardActions>
+                {props.children}
 
             </Card>
 
