@@ -10,10 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import './EachPost.css'
 import { Link } from 'react-router-dom';
 
-
 const useStyles = makeStyles({
     root: {
-        minWidth: 275,
+        maxWidth: 275,
+        height: 375,
+
         backgroundColor: "azure",
         margin: "10px",
 
@@ -38,10 +39,12 @@ const EachPost = (props) => {
     const { userId, id, title, body } = post;
 
     return (
-        <div className='main-div'>
+        <div className='card-div'>
 
             {/* card 1 */}
+
             <Card className={classes.root}>
+
                 <CardContent>
 
                     {/* Post ID */}
@@ -62,12 +65,15 @@ const EachPost = (props) => {
                 </CardContent>
 
                 <CardActions>
+
                     <Link to={`/post/${id}`}>
                         <Button onClick={showMoreHandler} variant="contained" color="primary" size="small">Show More</Button>
                     </Link>
 
                 </CardActions>
+
             </Card>
+
 
         </div>
     );

@@ -21,7 +21,7 @@ const AllPost = () => {
     };
 
     return (
-       
+
             <div className="main-div">
                 {/* <h1>All Post</h1> */}
 
